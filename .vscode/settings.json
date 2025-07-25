@@ -1,0 +1,13 @@
+{
+    "author": "Wilfryn Viloria Rosario",
+
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+
+    "eslint.validate": ["javascript"],
+
+    "cSpell.ignoreWords": ["Pomodoro", "gulpfile", "iamwilllll", "Wilfryn", "Viloria", "Rosario", "asyncAwait", "devtools", "username", "frontend", "backend", "áéíóúÁÉÍÓÚñÑ"]
+}

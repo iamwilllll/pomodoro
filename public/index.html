@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Define document character encoding -->
+        <meta charset="UTF-8" />
+        <!-- Configure responsive viewport settings -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Application description for SEO and social sharing -->
+        <meta name="description" content="Pomodoro Focus App is a minimalist tool designed to improve your productivity using the Pomodoro Technique. Alternate between focused work sessions and short breaks to maximize your focus, avoid mental fatigue, and stay motivated throughout the day." />
+        <!-- Author information -->
+        <meta name="author" content="Wilfryn Viloria Rosario" />
+        <!-- SEO keywords for search engine optimization -->
+        <meta name="keywords" content="pomodoro, pomodoro technique, timer, productivity, focus, concentration, time management, study, distraction-free work, task timer, pomodoro app, stopwatch, habit improvement, breaks, deep work, productivity tool" />
+        <!-- Canonical URL to prevent duplicate content issues -->
+        <link rel="canonical" href="https://pomodoro-focus-app-wvr.netlify.app" />
+
+        <!-- Import 'ROBOTO' font from Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+        <!-- End of font import -->
+
+        <!-- Favicon configuration for multiple formats -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/build/images/png/favicon-32x32.png" />
+        <link rel="icon" type="image/svg+xml" href="/build/images/svg/favicon.svg" />
+        <!-- End of favicon configuration -->
+
+        <!-- Link to main CSS stylesheet -->
+        <link rel="stylesheet" href="/build/css/index.css" />
+        <!-- End of CSS link -->
+
+        <!-- Document title shown in browser tab -->
+        <title>Pomodoro Focus App | Wilfryn Viloria - Front-End Developer</title>
+    </head>
+    <body>
+        <main>
+            <section class="container task" id="task">
+                <article>
+                    <header class="task__header">
+                        <div class="task__header-content">
+                            <h1 class="task__title">Task List</h1>
+                            <h2 class="task__subtitle">Improve your productivity using the Pomodoro technique</h2>
+                        </div>
+                    </header>
+                    <ul class="task__body reset-list" id="task-list"></ul>
+                    <footer class="task__footer">
+                        <form action="" class="task__form" id="task-form">
+                            <input type="text" placeholder="Add a new task!" class="task__input" id="task" />
+                            <input type="submit" value="Add task" class="task__submit" />
+                        </form>
+                    </footer>
+                </article>
+            </section>
+        </main>
+
+        <!-- Load JavaScript file with defer attribute -->
+        <script src="/build/scripts/index.js" type="module" defer></script>
+    </body>
+</html>
