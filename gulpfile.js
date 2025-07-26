@@ -1,4 +1,4 @@
-// eslint gulp gulp-postcss  gulp-replace gulp-sass postcss prettier sass cssnano merge-stream
+// eslint gulp gulp-postcss  gulp-replace gulp-sass postcss prettier sass cssnano merge-stream gulp-terser
 import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import terser from 'gulp-terser';
@@ -18,7 +18,7 @@ export function compileJS() {
     return src('src/scripts/**/*.js')
         .pipe(terser()) // Minify the combined file
         .pipe(dest('build/scripts'));
-} // Task to compile and minify JavaScript files
+}
 
 export function compileDB() {
     return src('./src/db/**/*.js')

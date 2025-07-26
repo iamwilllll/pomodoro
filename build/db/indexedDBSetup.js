@@ -1,0 +1,1 @@
+class IndexedDB{constructor(){this.db=null}create(){return new Promise((e,t)=>{const n=window.indexedDB.open("tasks",1);n.onupgradeneeded=()=>{this.db=n.result;this.db.createObjectStore("tasks",{keyPath:"id",autoIncrement:!0}).createIndex("task","task",{unique:!1})},n.onsuccess=()=>e(n.result),n.onerror=()=>t(!1)})}}export const DBManager=new IndexedDB;
