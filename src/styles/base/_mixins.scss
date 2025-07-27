@@ -31,9 +31,10 @@
     }
 }
 
-@mixin grid($columns: 1, $gap: 5rem) {
+@mixin grid($columns: 1, $rows: auto, $gap: 5rem) {
     display: grid;
     grid-template-columns: repeat($columns, 1fr);
+    grid-template-rows: repeat($rows, 1fr);
     gap: $gap;
 }
 

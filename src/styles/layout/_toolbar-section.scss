@@ -4,8 +4,10 @@
 .toolbar {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2.5rem;
 
     @include m.tabletXL {
+        margin-bottom: 0;
         justify-content: right;
         gap: 5rem;
     }

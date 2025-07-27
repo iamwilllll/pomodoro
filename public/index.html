@@ -1,66 +1,103 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <!-- Define document character encoding -->
+        <!-- Set document character encoding -->
         <meta charset="UTF-8" />
-        <!-- Configure responsive viewport settings -->
+
+        <!-- Ensure proper rendering and touch zooming on mobile devices -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <!-- Application description for SEO and social sharing -->
         <meta name="description" content="Pomodoro Focus App is a minimalist tool designed to improve your productivity using the Pomodoro Technique. Alternate between focused work sessions and short breaks to maximize your focus, avoid mental fatigue, and stay motivated throughout the day." />
-        <!-- Author information -->
+
+        <!-- Author of the application -->
         <meta name="author" content="Wilfryn Viloria Rosario" />
-        <!-- SEO keywords for search engine optimization -->
+
+        <!-- SEO keywords to improve search engine ranking -->
         <meta name="keywords" content="pomodoro, pomodoro technique, timer, productivity, focus, concentration, time management, study, distraction-free work, task timer, pomodoro app, stopwatch, habit improvement, breaks, deep work, productivity tool" />
-        <!-- Canonical URL to prevent duplicate content issues -->
+
+        <!-- Canonical URL to avoid duplicate content penalties -->
         <link rel="canonical" href="https://pomodoro-focus-app-wvr.netlify.app" />
 
-        <!-- Import 'ROBOTO' font from Google Fonts -->
+        <!-- Preconnect to Google's font servers for performance optimization -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- Import 'Roboto' font from Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-        <!-- End of font import -->
 
-        <!-- Favicon configuration for multiple formats -->
+        <!-- Favicon for browser tabs and bookmarks -->
         <link rel="icon" type="image/png" sizes="32x32" href="/build/images/png/favicon-32x32.png" />
-        <!-- End of favicon configuration -->
 
-        <!-- Link to main CSS stylesheet -->
+        <!-- Link to the main compiled CSS file -->
         <link rel="stylesheet" href="/build/css/index.css" />
-        <!-- End of CSS link -->
 
-        <!-- Document title shown in browser tab -->
+        <!-- Title of the web application displayed in browser tab -->
         <title>Pomodoro Focus App | Wilfryn Viloria - Front-End Developer</title>
     </head>
     <body>
         <main>
+            <!-- Toolbar at the top containing interactive controls -->
             <section class="toolbar">
-                <button class="button toolbar__button toolbar__button--tasks" aria-label="Open tasks panel">
-                    <svg class="icon toolbar__icon">
-                        <use href="/build/images/svg/sprite.svg#task-open-icon"></use>
-                    </svg>
-                </button>
+                <!-- Button to show/hide the tasks panel -->
+                <button class="button toolbar__button toolbar__button--tasks" id="toggle-task-section" aria-label="Open tasks panel"></button>
 
-                <button class="button toolbar__button toolbar__button--theme-toggle" aria-label="Toggle theme">
-                    <svg>
-                        <use href="/build/images/svg/sprite.svg#sun-icon"></use>
-                    </svg>
-                </button>
+                <!-- Button to toggle between light and dark themes -->
+                <button class="button toolbar__button toolbar__button--theme-toggle" id="toggle-theme" aria-label="Toggle theme"></button>
             </section>
 
+            <!-- Main dashboard containing the task list and the pomodoro timer -->
             <div class="dashboard">
-                <section class="container tasks" id="tasks"></section>
+                <!-- Task management section (initially hidden on mobile) -->
+                <section class="container tasks hidden" id="tasks">
+                    <!-- Decorative line under the header -->
+                    <div class="task__header__line"></div>
 
+                    <!-- Header with task titles and icon -->
+                    <header class="tasks__header">
+                        <section>
+                            <h1 class="task__title">Tasks list</h1>
+                            <h2 class="task__sub__tittle">Your goals for this session</h2>
+                        </section>
+                        <figure class="task__icon__container">
+                            <svg class="task__icon">
+                                <use href="/build/images/svg/sprite.svg#check-icon"></use>
+                            </svg>
+                        </figure>
+                    </header>
+
+                    <!-- Task items will be inserted here dynamically -->
+                    <article class="task__container" id="tasks__container">
+                        <ul class="reset-list"></ul>
+                    </article>
+
+                    <!-- Form to add new tasks -->
+                    <footer>
+                        <form action="" class="task__form" id="task__form">
+                            <input type="text" name="task" placeholder="Add your task" class="task__input task__input--task" />
+                            <input type="submit" class="task__input task__input--submit" />
+                        </form>
+                    </footer>
+                </section>
+
+                <!-- Pomodoro timer section -->
                 <section class="container timer" id="timer">
+                    <!-- Digital clock display -->
                     <article class="timer__clock">
                         <p>25:00</p>
+                        <!-- Default countdown starting time -->
                     </article>
+
+                    <!-- Timer control buttons -->
                     <article class="timer__controls">
+                        <!-- Start or pause the countdown -->
                         <button class="button timer__button timer__button--time">
                             <svg>
                                 <use href="/build/images/svg/sprite.svg#clock-icon-pause"></use>
                             </svg>
                         </button>
 
+                        <!-- Mute or unmute the timer sound -->
                         <button class="button timer__button timer__button--sound">
                             <svg>
                                 <use href="/build/images/svg/sprite.svg#sound-icon-pause"></use>
@@ -71,7 +108,7 @@
             </div>
         </main>
 
-        <!-- Load JavaScript file with defer attribute -->
+        <!-- Load main JavaScript file as a module and defer its execution -->
         <script src="/build/scripts/index.js" type="module" defer></script>
     </body>
 </html>

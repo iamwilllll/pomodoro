@@ -1,17 +1,20 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
-.timer {
-}
-
 .timer__controls {
     background-color: var(--secondary-color);
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
     gap: 1rem;
-    padding: 1.5rem 7.5rem;
+    padding: 1rem 7.5rem;
     border-radius: 4rem;
+
+    @include m.tabletXL {
+        padding: 1rem 7.5rem;
+        width: 60%;
+    }
 }
 
 .timer__button {
@@ -23,4 +26,13 @@
         height: 100%;
         display: block;
     }
+}
+
+.timer__clock p {
+    margin: 0;
+    text-align: center;
+    font-size: 7rem;
+    font-family: v.$primary-font;
+    color: var(--primary-font-color);
+    font-weight: v.$bold;
 }
