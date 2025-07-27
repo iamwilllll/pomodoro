@@ -119,6 +119,10 @@ export async function crop() {
     }
 }
 
+export function redirect() {
+    return src('_redirects').pipe(dest('build')); // to /build
+}
+
 // Watch source files for changes during development
 export function dev() {
     watch('src/styles/**/*.scss', css);
@@ -130,9 +134,9 @@ export function dev() {
 }
 
 // Main tasks
-export const deploy = series(format, crop, compileJS, compileDB, css, html, fixPaths); // For production
+export const deploy = series(format, crop, compileJS, compileDB, css, html, fixPaths, redirect); // For production
 
-export const build = series(format, crop, compileJS, compileDB, css, html, fixPaths, dev); // For development
+export const build = series(format, crop, compileJS, compileDB, css, html, fixPaths, redirect, dev); // For development
 
 // Default task
 export default build;
