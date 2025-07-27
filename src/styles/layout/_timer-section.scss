@@ -1,0 +1,26 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.timer {
+}
+
+.timer__controls {
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 7.5rem;
+    border-radius: 4rem;
+}
+
+.timer__button {
+    width: 5rem;
+    height: 5rem;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+}

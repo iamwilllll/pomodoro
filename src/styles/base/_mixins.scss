@@ -13,6 +13,12 @@
     }
 }
 
+@mixin tabletXL {
+    @media (min-width: v.$tabletXL) {
+        @content;
+    }
+}
+
 @mixin desktop {
     @media (min-width: v.$desktop) {
         @content;
