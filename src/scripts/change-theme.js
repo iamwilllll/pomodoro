@@ -1,63 +1,66 @@
-/* Wait to DOMContentLoaded */
-document.addEventListener('DOMContentLoaded', () => {
-    // Applies the selected or default visual theme to the interface
-    UIThemeManager.applyTheme();
-
-    // Loads and sets up the necessary events for user interaction
-
-    // Add a click event listener to the toggle-theme button
-    document.querySelector('#toggle-theme').addEventListener('click', () => {
-        // Call changeTheme function, passing the button element as an argument
-        UIThemeManager.changeTheme();
-    });
-});
-
-/* create class */
+// Create a class to manage the UI theme behavior (dark/light mode)
 class UITheme {
     applyTheme() {
-        //Search for the theme that has the local storage, if it doesn't exist, apply the dark theme
+        // Look for the saved theme in localStorage; if none is found, default to 'dark'
         const savedTheme = localStorage.getItem('theme') || 'dark';
 
-        //Apply the 'data-theme' attribute to the document using the 'savedTheme' variable.
+        // Apply the saved theme to the root <html> element using the 'data-theme' attribute
         document.documentElement.setAttribute('data-theme', savedTheme);
 
+        // Update the icon to match the applied theme
         UIThemeManager.changeIcon(savedTheme);
     }
 
     changeTheme() {
-        //get the value of the 'data-theme' attribute
+        // Get the current theme from the 'data-theme' attribute
         let currentTheme = document.documentElement.getAttribute('data-theme');
-        //If the theme is not 'dark' it stays the same, otherwise it changes to 'light'
-        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', currentTheme); // the change is applied to the document
-        localStorage.setItem('theme', currentTheme); //the change is applied to localstorage
 
+        // Toggle the theme: if it's 'dark', switch to 'light'; otherwise, switch to 'dark'
+        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        // Apply the new theme to the <html> element
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        // Save the new theme in localStorage to persist between sessions
+        localStorage.setItem('theme', currentTheme);
+
+        // Update the theme icon to reflect the current theme
         UIThemeManager.changeIcon(currentTheme);
     }
 
     changeIcon(theme) {
-        // Select the toggle theme button element
+        // Select the theme toggle button container
         const toggleThemeHTML = document.querySelector('#toggle-theme');
 
-        // Select the current theme icon element (if any)
+        // Remove the previous icon, if it exists
         const toggleThemeIconHTML = document.querySelector('#change-theme-icon');
 
-        // Create a new image element for the icon
-        const img = document.createElement('img');
-        img.id = 'change-theme-icon';
+        // Create a new <svg> element using the SVG namespace
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.classList.add('icon', 'toolbar__icon');
+        svg.id = 'change-theme-icon';
 
-        // Set the icon source depending on the theme
-        if (theme === 'dark') img.src = '/build/images/svg/sun-icon.svg'; // Show sun icon when in dark mode
+        // Create a <use> element to reference the correct icon
+        const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
 
-        if (theme === 'light') img.src = '/build/images/svg/moon-icon.svg'; // Show moon icon when in light mode
+        // Set the appropriate icon depending on the theme:
+        // - Sun icon for dark theme (to indicate you can switch to light)
+        // - Moon icon for light theme (to indicate you can switch to dark)
+        const hrefValue = theme === 'dark' ? '/build/images/svg/sprite.svg#sun-icon' : '/build/images/svg/sprite.svg#moon-icon';
+
+        // Set the href attribute using the xlink namespace
+        use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', hrefValue);
+
+        // Append the <use> element to the SVG
+        svg.appendChild(use);
 
         // Remove the old icon if it exists
         if (toggleThemeIconHTML) toggleThemeIconHTML.remove();
 
-        // Add the new icon to the toggle button
-        toggleThemeHTML.appendChild(img);
+        // Append the new icon to the toggle button
+        toggleThemeHTML.appendChild(svg);
     }
 }
 
-/* instantiate class */
-const UIThemeManager = new UITheme();
+// Instantiate the class and export it to be used throughout the app
+export const UIThemeManager = new UITheme();
