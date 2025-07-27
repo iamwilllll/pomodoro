@@ -22,7 +22,6 @@
 
         <!-- Favicon configuration for multiple formats -->
         <link rel="icon" type="image/png" sizes="32x32" href="/build/images/png/favicon-32x32.png" />
-        <link rel="icon" type="image/svg+xml" href="/build/images/svg/favicon.svg" />
         <!-- End of favicon configuration -->
 
         <!-- Link to main CSS stylesheet -->
@@ -34,23 +33,42 @@
     </head>
     <body>
         <main>
-            <section class="container task" id="task">
-                <article>
-                    <header class="task__header">
-                        <div class="task__header-content">
-                            <h1 class="task__title">Task List</h1>
-                            <h2 class="task__subtitle">Improve your productivity using the Pomodoro technique</h2>
-                        </div>
-                    </header>
-                    <ul class="task__body reset-list" id="task-list"></ul>
-                    <footer class="task__footer">
-                        <form action="" class="task__form" id="task-form">
-                            <input type="text" placeholder="Add a new task!" class="task__input" id="task" />
-                            <input type="submit" value="Add task" class="task__submit" />
-                        </form>
-                    </footer>
-                </article>
+            <section class="toolbar">
+                <button class="button toolbar__button toolbar__button--tasks" aria-label="Open tasks panel">
+                    <svg class="icon toolbar__icon">
+                        <use href="/build/images/svg/sprite.svg#task-open-icon"></use>
+                    </svg>
+                </button>
+
+                <button class="button toolbar__button toolbar__button--theme-toggle" aria-label="Toggle theme">
+                    <svg>
+                        <use href="/build/images/svg/sprite.svg#sun-icon"></use>
+                    </svg>
+                </button>
             </section>
+
+            <div class="dashboard">
+                <section class="container tasks" id="tasks"></section>
+
+                <section class="container timer" id="timer">
+                    <article class="timer__clock">
+                        <p>25:00</p>
+                    </article>
+                    <article class="timer__controls">
+                        <button class="button timer__button timer__button--time">
+                            <svg>
+                                <use href="/build/images/svg/sprite.svg#clock-icon-pause"></use>
+                            </svg>
+                        </button>
+
+                        <button class="button timer__button timer__button--sound">
+                            <svg>
+                                <use href="/build/images/svg/sprite.svg#sound-icon-pause"></use>
+                            </svg>
+                        </button>
+                    </article>
+                </section>
+            </div>
         </main>
 
         <!-- Load JavaScript file with defer attribute -->
