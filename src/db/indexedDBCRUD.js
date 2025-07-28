@@ -114,4 +114,3 @@ async function getTaskStore(mode = 'readwrite') {
 
 // Instantiate and export the class
 export const IndexedDBCRUDManager = new IndexedDBCRUD();
-

@@ -5,7 +5,12 @@ export default function errorHandle(name) {
             super(message);
             this.name = name;
             this.stack = '';
+            // this.showAlert();
         }
+
+        // showAlert() {
+        //     console.log(name);
+        // }
     };
 }
 
