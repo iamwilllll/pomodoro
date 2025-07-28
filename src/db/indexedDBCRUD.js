@@ -102,7 +102,7 @@ async function getTaskStore(mode = 'readwrite') {
     try {
         const transaction = database.transaction(['taskList'], mode);
         const store = transaction.objectStore('taskList');
-        
+
         if (!store) throw new DataBaseError('Failed to access the object store');
 
         return store;

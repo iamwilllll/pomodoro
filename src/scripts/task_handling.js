@@ -8,10 +8,10 @@ class Task {
     constructor() {
         // This is the base template for a task object
         this.taskTemplate = {
-            task__id: '',             // Unique ID for the task
-            task__description: '',    // Task description (user input)
-            task__edited: false,      // Boolean to track if the task was edited
-            task__edited__date: ''    // Date of the last edit (if any)
+            task__id: '', // Unique ID for the task
+            task__description: '', // Task description (user input)
+            task__edited: false, // Boolean to track if the task was edited
+            task__edited__date: '' // Date of the last edit (if any)
         };
     }
 
@@ -19,7 +19,7 @@ class Task {
     create(taskValue) {
         // Generate a unique ID using timestamp and random number
         const ID = `${Date.now()}-${Math.floor(Math.random() * 10000)}`;
-        
+
         // Assign the ID to the task template
         this.taskTemplate.id = ID; // This field seems redundant unless used elsewhere
         this.taskTemplate.task__id = ID;
