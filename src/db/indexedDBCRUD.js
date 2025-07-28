@@ -1,5 +1,6 @@
 import { DataBaseError } from '../scripts/error_handling.js';
 import { DBManager } from './indexedDBSetup.js';
+import { UIManager } from '../scripts/UI.js';
 
 // Class to manage CRUD operations (Create, Read, Update, Delete) for the IndexedDB
 class IndexedDBCRUD {
@@ -28,6 +29,8 @@ class IndexedDBCRUD {
         // Wait for the object store to be available
         const objectStore = await getTaskStore();
 
+        UIManager.clearTasks();
+
         // Create a promise to iterate through all tasks
         await new Promise((resolve, reject) => {
             // Create a cursor to iterate over the records
@@ -37,9 +40,7 @@ class IndexedDBCRUD {
             cursorRequest.onsuccess = () => {
                 const cursor = cursorRequest.result;
 
-                /* -------- Logic to display all tasks from IndexedDB -------- */
-                if (cursor) console.log(cursor.value);
-                /* ---------------------------------------------------------- */
+                if (cursor) UIManager.renderAllTasks(cursor.value);
 
                 // Continue to the next record
                 if (cursor) cursor.continue();
@@ -78,9 +79,6 @@ class IndexedDBCRUD {
             // Attempt to delete the task using the given ID
             const deleteRequest = objectStore.delete(id);
 
-            // Resolve if successful
-            deleteRequest.onsuccess = () => resolve();
-
             // Reject if an error occurs
             deleteRequest.onerror = () => reject(new DataBaseError('The task could not be deleted'));
         }).catch(err => console.error(err));
@@ -104,7 +102,9 @@ async function getTaskStore(mode = 'readwrite') {
     try {
         const transaction = database.transaction(['taskList'], mode);
         const store = transaction.objectStore('taskList');
+        
         if (!store) throw new DataBaseError('Failed to access the object store');
+
         return store;
     } catch (err) {
         console.error(err);

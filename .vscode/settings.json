@@ -9,5 +9,5 @@
 
     "eslint.validate": ["javascript"],
 
-    "cSpell.ignoreWords": ["Pomodoro", "gulpfile", "iamwilllll", "Wilfryn", "Viloria", "Rosario", "asyncAwait", "devtools", "username", "frontend", "backend", "áéíóúÁÉÍÓÚñÑ"]
+    "cSpell.ignoreWords": ["indexedDBCRUD", "Pomodoro", "gulpfile", "iamwilllll", "Wilfryn", "Viloria", "Rosario", "asyncAwait", "devtools", "username", "frontend", "backend", "áéíóúÁÉÍÓÚñÑ"]
 }
