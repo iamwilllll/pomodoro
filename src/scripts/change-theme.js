@@ -46,7 +46,8 @@ class UITheme {
         // Set the appropriate icon depending on the theme:
         // - Sun icon for dark theme (to indicate you can switch to light)
         // - Moon icon for light theme (to indicate you can switch to dark)
-        const hrefValue = theme === 'dark' ? '/build/images/svg/sprite.svg#sun-icon' : '/build/images/svg/sprite.svg#moon-icon';
+
+        const hrefValue = theme === 'dark' ? '../images/svg/sprite.svg#sun-icon' : '../images/svg/sprite.svg#moon-icon';
 
         // Set the href attribute using the xlink namespace
         use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', hrefValue);
