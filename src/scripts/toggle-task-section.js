@@ -38,8 +38,8 @@ class UITask {
         const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
 
         // Determine which icon to show based on visibility
-        if (visibility) hrefValue = '/build/images/svg/sprite.svg#task-open-icon';
-        if (!visibility) hrefValue = '/build/images/svg/sprite.svg#task-close-icon';
+        if (visibility) hrefValue = '../images/svg/sprite.svg#task-open-icon';
+        if (!visibility) hrefValue = '../images/svg/sprite.svg#task-close-icon';
 
         // Set the href for the <use> element to the correct icon
         use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', hrefValue);
