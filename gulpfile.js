@@ -57,20 +57,40 @@ export function html() {
 }
 
 // Remove `/build` from paths inside HTML files
-export function fixPaths() {
+function fixPaths() {
+    // Fix paths in HTML files
     const html = src('build/**/*.html')
-        .pipe(replace(/href="\/build([^"]*)"/g, 'href="..$1"'))
-        .pipe(replace(/src="\/build([^"]*)"/g, 'src="..$1"'))
-        .pipe(replace(/srcset="\/build([^"]*)"/g, 'srcset="..$1"'))
+        // Replace href="/build/..." or src="/build/..." or srcset="/build/..." with correct paths
+        .pipe(
+            replace(/(href|src|srcset)="\/build\/([^"]*)"/g, (match, attr, path) => {
+                // If the path contains sprite.svg, change it to point to /images/... folder
+                if (path.includes('sprite.svg')) {
+                    // Convert /build/images/svg/sprite.svg to /images/svg/sprite.svg
+                    return `${attr}="/images/${path.split('/').slice(2).join('/')}"`;
+                }
+                // For other resources, remove the /build prefix to make the path root-based
+                return `${attr}="/${path}"`;
+            })
+        )
         .pipe(dest('build'));
 
+    // Fix paths in JS files
     const js = src('build/**/*.js')
-        .pipe(replace(/href="\/build([^"]*)"/g, 'href=".$1"'))
-        .pipe(replace(/src="\/build([^"]*)"/g, 'src=".$1"'))
-        .pipe(replace(/srcset="\/build([^"]*)"/g, 'srcset=".$1"'))
+        // Replace href, src, or srcset attributes that reference /build/... paths
+        .pipe(
+            replace(/(href|src|srcset)="([\.\/]*)(\/build\/([^"]*))"/g, (match, attr, rel, fullPath, path) => {
+                // If the path includes sprite.svg, change it to absolute path without /build
+                if (path.includes('sprite.svg')) {
+                    return `${attr}="/images/${path.split('/').slice(2).join('/')}"`;
+                }
+                // For other resources, convert to relative path by removing /build and prepending relative prefix
+                return `${attr}="${rel}.${path.replace('/build', '')}"`;
+            })
+        )
         .pipe(dest('build'));
 
-    return merge(html, js); // We unite the two processes
+    // Merge both streams and return
+    return merge(html, js);
 }
 
 export async function crop() {
