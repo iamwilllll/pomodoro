@@ -1,0 +1,6 @@
+.gitignore
+.env
+/node_modules
+README.md
+LICENSE.md
+CONTRIBUTING.md
