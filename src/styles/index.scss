@@ -6,3 +6,7 @@
 @forward './base/mixins';
 @forward './base/globals';
 @forward './base/utilities';
+
+/* layout styles */
+@forward './layout/control_section';
+@forward './layout/timer_section';

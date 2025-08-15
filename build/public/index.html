@@ -21,12 +21,12 @@
         <!-- End of font import -->
 
         <!-- Favicon configuration for multiple formats -->
-        <link rel="icon" type="image/png" sizes="32x32" href="/build/images/png/favicon-32x32.png" />
-        <link rel="icon" type="image/svg+xml" href="/build/images/svg/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="../images/png/favicon-32x32.png" />
+        <link rel="icon" type="image/svg+xml" href="../images/svg/favicon.svg" />
         <!-- End of favicon configuration -->
 
         <!-- Link to main CSS stylesheet -->
-        <link rel="stylesheet" href="/build/css/index.css" />
+        <link rel="stylesheet" href="../css/index.css" />
         <!-- End of CSS link -->
 
         <!-- Document title shown in browser tab -->
@@ -34,7 +34,30 @@
     </head>
     <body>
         <main>
-            <section class="container task" id="task">
+            <section class="control">
+                <button></button>
+                <button class="button control__button" id="toggle-theme">
+                    <svg class="icon">
+                        <use href="/src/assets/icons/icons.svg#icon-sun"></use>
+                    </svg>
+                </button>
+            </section>
+
+            <section class="container timer" id="timer">
+                <article>
+                    <header class="task__header">
+                        <p>25:00</p>
+                    </header>
+
+                    <footer>
+                        <button></button>
+                        <button></button>
+                        <button></button>
+                    </footer>
+                </article>
+            </section>
+
+            <!--             <section class="container task" id="task">
                 <article>
                     <header class="task__header">
                         <div class="task__header-content">
@@ -51,10 +74,11 @@
                     </footer>
                 </article>
             </section>
+             -->
         </main>
 
         <!-- Load JavaScript file with defer attribute -->
-        <script src="/build/scripts/index.js" type="module" defer></script>
-        <script src="/build/db/indexedDBCRUD.js" type="module" defer></script>
+        <script src="../scripts/index.js" type="module" defer></script>
+        <script src="../db/indexedDBCRUD.js" type="module" defer></script>
     </body>
 </html>

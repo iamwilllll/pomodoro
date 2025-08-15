@@ -1,0 +1,1 @@
+export default function errorHandle(r){return class extends Error{constructor(o){super(o),this.name=r,this.stack=""}}}export const DataBaseError=errorHandle("dataBaseError");export const FormError=errorHandle("FormError");

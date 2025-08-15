@@ -14,6 +14,16 @@ $black: #000000;
 $white: #ffffff;
 
 :root {
+    --bg-color: #121214;
+    --primary-color: #007acc;
+    --secondary-color: #27272a;
+    --primary-font-color: #ffffff;
+    --secondary-font-color: #b2b2b2;
+    --line-color: #27272a;
+}
+
+//Dark theme
+[data-theme='ligth'] {
     --bg-color: #ffffff;
     --primary-color: #007acc;
     --secondary-color: #b2b2b2;
@@ -21,16 +31,6 @@ $white: #ffffff;
     --secondary-font-color: #2a2a2a;
     --line-color: #27272a;
     --error-color: #be1b1b;
-}
-
-//Dark theme
-[data-theme='dark'] {
-    --bg-color: #121214;
-    --primary-color: #007acc;
-    --secondary-color: #27272a;
-    --primary-font-color: #ffffff;
-    --secondary-font-color: #b2b2b2;
-    --line-color: #27272a;
 }
 
 /* Font Weights */

@@ -34,7 +34,30 @@
     </head>
     <body>
         <main>
-            <section class="container task" id="task">
+            <section class="control">
+                <button></button>
+                <button class="button control__button" id="toggle-theme">
+                    <svg class="icon">
+                        <use href="/src/assets/icons/icons.svg#icon-sun"></use>
+                    </svg>
+                </button>
+            </section>
+
+            <section class="container timer" id="timer">
+                <article>
+                    <header class="task__header">
+                        <p>25:00</p>
+                    </header>
+
+                    <footer>
+                        <button></button>
+                        <button></button>
+                        <button></button>
+                    </footer>
+                </article>
+            </section>
+
+            <!--             <section class="container task" id="task">
                 <article>
                     <header class="task__header">
                         <div class="task__header-content">
@@ -51,6 +74,7 @@
                     </footer>
                 </article>
             </section>
+             -->
         </main>
 
         <!-- Load JavaScript file with defer attribute -->
